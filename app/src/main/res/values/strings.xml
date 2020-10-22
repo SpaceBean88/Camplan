@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Camplan</string>
+    <string name="logo">CAMPLAN</string>
+    <!--  Menu String  -->
+    <string name="menu_plan">나의 캠핑 일정</string>
+    <string name="menu_account">캠핑 가계부</string>
+    <string name="menu_wish">위시리스트</string>
+    <string name="menu_check">캠핑 체크리스트</string>
+    <string name="menu_equip">나의 장비리스트</string>
+    <string name="menu_site">캠핑장 리스트</string>
+</resources>
