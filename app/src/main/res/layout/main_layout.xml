@@ -10,10 +10,24 @@
     <include layout="@layout/main_toolbar" />
 
 <!--  Main View  -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="메인레이아웃"
-        android:textColor="#000" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="캠핑 일정이 없습니다." />
+
+        <ImageView
+            android:id="@+id/main_write_btn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/plus_icon2_512px" />
+    </RelativeLayout>
 </LinearLayout>

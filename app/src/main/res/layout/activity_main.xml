@@ -21,5 +21,7 @@
         android:layout_gravity="start"
         android:textAlignment="gravity"
         app:headerLayout="@layout/main_drawer_header"
-        app:menu="@menu/menu" />
+        app:menu="@menu/menu"
+        app:itemTextAppearance="@style/MenuFont"
+        />
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -2,12 +2,13 @@ package com.acaroom.camplan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.GravityCompat
+import com.acaroom.camplan.utils.Constants.TAG
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onBackPressed() {
         if(layout_drawer.isDrawerOpen(GravityCompat.START)) {
+            Log.d(TAG, "onBackPressed - Drawer Close()")
             layout_drawer.closeDrawers()
         } else {
             super.onBackPressed() //일반 백버튼 기능 실행
