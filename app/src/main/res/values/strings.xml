@@ -1,4 +1,5 @@
 <resources>
+    <!--  Logo String  -->
     <string name="app_name">Camplan</string>
     <string name="logo">CAMPLAN</string>
     <!--  Menu String  -->

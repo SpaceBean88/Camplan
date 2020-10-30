@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/layout_drawer"
+<LinearLayout
+    android:id="@+id/main_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <!--  Main Layout  -->
-    <include
+    <!--  ToolBar  -->
+    <include layout="@layout/main_toolbar" />
+
+    <!--  Main View  -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        layout="@layout/main_layout" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/naviView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:textAlignment="gravity"
-        app:headerLayout="@layout/main_drawer_header"
-        app:menu="@menu/menu"
-        app:itemTextAppearance="@style/MenuFont"
-        />
-</androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_contents_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/main_write_btn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/plus_icon2_512px" />
+    </RelativeLayout>
+</LinearLayout>

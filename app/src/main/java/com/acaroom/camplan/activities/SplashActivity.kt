@@ -1,4 +1,4 @@
-package com.acaroom.camplan
+package com.acaroom.camplan.activities
 
 import android.content.Intent
 import android.os.Bundle
