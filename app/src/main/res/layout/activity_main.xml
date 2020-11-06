@@ -12,12 +12,14 @@
     <!--  Main View  -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_contents_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
 
         <ImageView
             android:id="@+id/main_write_btn"
@@ -29,4 +31,5 @@
             android:layout_marginBottom="30dp"
             android:src="@drawable/plus_icon2_512px" />
     </RelativeLayout>
+
 </LinearLayout>

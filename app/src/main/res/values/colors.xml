@@ -14,4 +14,9 @@
     <!--  TextColor  -->
     <color name="textViewOutlineColor">#679A64</color>
     <color name="mainCardViewColor">#80636262</color>
+
+    <!--  Button Color  -->
+    <color name="completeBtnColor">#00989E</color>
+    <color name="lightGrayColor">#959595</color>
+    <color name="lightGreenColor">#07BF7F</color>
 </resources>

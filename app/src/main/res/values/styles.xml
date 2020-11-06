@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,9 +11,17 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
-    
+
+    <!-- Navigation bar Font Style  -->
     <style name="MenuFont" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/cafe24ssukssuk</item>
         <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--  Add Content RadioBtn Style  -->
+    <style name="MyRadioBtn" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="colorControlNormal">@color/lightGrayColor</item>
+        <item name="colorControlActivated">@color/lightGreenColor</item>
+        <item name="colorControlHighlight">@color/colorSplashBg</item>
     </style>
 </resources>

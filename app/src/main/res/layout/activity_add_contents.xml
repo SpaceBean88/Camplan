@@ -14,36 +14,91 @@
 
         <include layout="@layout/main_toolbar" />
 
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/text_view_outline"
-            android:fontFamily="@font/cafe24ohsquare"
-            android:gravity="center_vertical"
-            android:hint="캠핑 제목을 입력해 주세요."
-            android:paddingHorizontal="10dp"
-            android:maxLines="1"
-            android:maxLength="25"
-            android:textSize="16sp" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:text="캠핑일정"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/add_camp_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cafe24ohsquare"
+                android:text="@string/add_contents_title"
+                android:textColor="@color/logoColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/add_camp_title"
+                android:src="@drawable/drawer_line" />
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColorHint="@color/logoColor"
+            app:boxStrokeColor="@color/textViewOutlineColor"
+            app:counterEnabled="true"
+            app:counterMaxLength="25"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/logoColor"
+            app:helperText="제목을 입력해 주세요."
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_camp_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="25"
+                android:singleLine="true"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/add_camp_schedule_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cafe24ohsquare"
+                android:text="@string/add_contents_schedule"
+                android:textColor="@color/logoColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/add_camp_schedule_text"
+                android:src="@drawable/drawer_line" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,17 +122,23 @@
                     android:id="@+id/start_date_text"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
+                    android:paddingHorizontal="5dp"
                     android:background="@drawable/text_view_outline"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/start_text"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    />
 
                 <ImageView
+                    android:id="@+id/start_date_btn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     android:src="@drawable/ic_calendar_icon"
+                    android:clickable="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/start_date_text"
@@ -106,17 +167,23 @@
                     android:id="@+id/end_date_text"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
+                    android:paddingHorizontal="5dp"
                     android:background="@drawable/text_view_outline"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/end_text"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    />
 
                 <ImageView
+                    android:id="@+id/end_date_btn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     android:src="@drawable/ic_calendar_end_icon"
+                    android:clickable="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/end_date_text"
@@ -124,124 +191,236 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            android:text="캠핑장명"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/text_view_outline"
-            android:hint="캠핑장 이름을 입력해 주세요."
-            android:paddingStart="5dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
-            android:text="캠핑지역"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/add_campsite_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cafe24ohsquare"
+                android:text="@string/add_contents_Campsite"
+                android:textColor="@color/logoColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/add_campsite_name"
+                android:src="@drawable/drawer_line" />
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            app:boxStrokeColor="@color/textViewOutlineColor"
+            app:counterEnabled="true"
+            app:counterMaxLength="25"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/logoColor"
+            app:helperText="캠핑장 이름을 입력해 주세요."
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_campsite_name_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="25"
+                android:singleLine="true"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/add_camp_location_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cafe24ohsquare"
+                android:text="@string/add_contents_location"
+                android:textColor="@color/logoColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/add_camp_location_text"
+                android:src="@drawable/drawer_line" />
+        </RelativeLayout>
 
         <Spinner
             android:id="@+id/area_list_spinner"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/text_view_outline"
             android:spinnerMode="dropdown" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            android:text="캠핑종류"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <RadioGroup
-            android:id="@+id/camp_dev_radio_btn"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/add_camp_type_text"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
+                android:fontFamily="@font/cafe24ohsquare"
+                android:text="@string/add_contents_type"
+                android:textColor="@color/logoColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-                <RadioButton
-                    android:id="@+id/auto_camping_radio_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="오토캠핑"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:id="@+id/moto_camping_radio_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="모토캠핑"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/add_camp_type_text"
+                android:src="@drawable/drawer_line" />
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/camp_div_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/auto_camping_radio_btn"
+                style="@style/MyRadioBtn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
+                android:layout_weight="0.5"
+                android:checked="false"
+                android:text="@string/add_contents_radio_auto"
+                android:textSize="16sp" />
 
-                <RadioButton
-                    android:id="@+id/vanlife_camping_radio_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="차박캠핑"
-                    android:textSize="16sp" />
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/moto_camping_radio_btn"
+                style="@style/MyRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:checked="false"
+                android:text="@string/add_contents_radio_moto"
+                android:textSize="16sp" />
 
-                <RadioButton
-                    android:id="@+id/bivouac_camping_radio_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="노지캠핑"
-                    android:textSize="16sp" />
-            </LinearLayout>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/vanlife_camping_radio_btn"
+                style="@style/MyRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:checked="false"
+                android:text="@string/add_contents_radio_van"
+                android:textSize="16sp" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/bivouac_camping_radio_btn"
+                style="@style/MyRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:checked="false"
+                android:text="@string/add_contents_radio_biv"
+                android:textSize="16sp" />
         </RadioGroup>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/add_camp_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cafe24ohsquare"
+                android:text="@string/add_contents_budget"
+                android:textColor="@color/logoColor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/add_camp_budget"
+                android:src="@drawable/drawer_line" />
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            app:boxStrokeColor="@color/textViewOutlineColor"
+            app:counterEnabled="true"
+            app:counterMaxLength="25"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/logoColor"
+            app:helperText="지출예상 금액을 입력해 주세요."
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_camp_budget_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="30dp"
-            android:gravity="end"
-            >
-            <Button
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_camp_complete_btn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="완료"
-                />
+                android:background="@drawable/complete_btn"
+                android:text="@string/add_contents_save_btn"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
