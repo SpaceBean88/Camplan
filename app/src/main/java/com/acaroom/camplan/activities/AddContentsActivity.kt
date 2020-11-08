@@ -18,16 +18,7 @@ import kotlinx.android.synthetic.main.activity_add_contents.*
 
 class AddContentsActivity : AppCompatActivity() {
 
-    private lateinit var campData: CampData
-    private var database: AppDatabase? = null
-
-    private lateinit var addTitle: String
-    private lateinit var addCampStartDate: String //TODO:: LocalDate.parse 로 날짜파싱
-    private lateinit var addCampEndDate: String //TODO:: LocalDate.parse 로 날짜파싱
-    private lateinit var addCampSite: String
-    private lateinit var addCampLocation: String
-    private lateinit var addCampType: String
-    private var addCampBudget: Int = 0
+    private var appDatabase: AppDatabase? = null
 
     //Calendar
     private var calendar = Calendar.getInstance()
@@ -45,7 +36,6 @@ class AddContentsActivity : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, { view, year, month, day ->
                 start_date_text.text =
                     year.toString() + "/" + (month + 1).toString() + "/" + day.toString()
-                addCampStartDate = start_date_text.text.toString()
             }, year, month, day)
             datePickerDialog.show()
         }
@@ -54,7 +44,6 @@ class AddContentsActivity : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, { view, year, month, day ->
                 end_date_text.text =
                     year.toString() + "/" + (month + 1).toString() + "/" + day.toString()
-                addCampEndDate = end_date_text.text.toString()
             }, year, month, day)
             datePickerDialog.show()
         }
@@ -70,8 +59,7 @@ class AddContentsActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                addCampLocation = areaItems.get(position)
-                Log.d(TAG, "onItemSelected - selected Item : $addCampLocation")
+                add_camp_location_text.text = areaItems.get(position)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -83,42 +71,40 @@ class AddContentsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.auto_camping_radio_btn -> {
                     Log.d(TAG, "AddContentsActivity - 오토캠핑 버튼 클릭")
-                    addCampType = auto_camping_radio_btn.text.toString()
+                    add_camp_type_text.text = auto_camping_radio_btn.text.toString()
                 }
                 R.id.moto_camping_radio_btn -> {
                     Log.d(TAG, "AddContentsActivity - 모토캠핑 버튼 클릭")
-                    addCampType = moto_camping_radio_btn.text.toString()
+                    add_camp_type_text.text = moto_camping_radio_btn.text.toString()
                 }
                 R.id.vanlife_camping_radio_btn -> {
                     Log.d(TAG, "AddContentsActivity - 차박캠핑 버튼 클릭")
-                    addCampType = vanlife_camping_radio_btn.text.toString()
+                    add_camp_type_text.text = vanlife_camping_radio_btn.text.toString()
                 }
                 R.id.bivouac_camping_radio_btn -> {
                     Log.d(TAG, "AddContentsActivity - 비박캠핑 버튼 클릭")
-                    addCampType = bivouac_camping_radio_btn.text.toString()
+                    add_camp_type_text.text = bivouac_camping_radio_btn.text.toString()
                 }
             }
-            Log.d(TAG, "AddContentsActivity - $addCampType")
+        }
+
+        appDatabase = AppDatabase.getInstance(this)
+        val runnable = Runnable{
+            val campData = CampData()
+            campData.campTitle = add_camp_title_text.text.toString()
+            campData.campStartDate = start_date_text.text.toString()
+            campData.campEndDate = end_date_text.text.toString()
+            campData.campSiteName = add_campsite_name_text.text.toString()
+            campData.campLocation = add_camp_location_text.text.toString()
+            campData.campType = add_camp_type_text.text.toString()
+            campData.campBudget = add_camp_budget_text.text.toString().toInt()
+
+            appDatabase?.campDataDao()?.insertAll(campData)
         }
 
         add_camp_complete_btn.setOnClickListener {
-            addTitle = add_camp_title_text.text.toString()
-            addCampSite = add_campsite_name_text.text.toString()
-            addCampBudget = add_camp_budget_text.text.toString().toInt()
-
-            campData = CampData(
-                camp_num = 0,
-                campTitle = addTitle,
-                campStartDate = addCampStartDate,
-                campEndDate = addCampEndDate,
-                campSiteName = addCampSite,
-                campLocation = addCampLocation,
-                campType = addCampType,
-                campBudget = addCampBudget
-            )
-
-            database?.campDataDao()?.insertAll(campData) //Add All Contents in DB
-            addDataList.add(campData)
+            val addThread = Thread(runnable)
+            addThread.start()
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -130,5 +116,10 @@ class AddContentsActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
+    }
+
+    override fun onDestroy() {
+        AppDatabase.destroyInstance()
+        super.onDestroy()
     }
 }

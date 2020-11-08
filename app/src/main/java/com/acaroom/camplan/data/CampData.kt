@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "camp_data")
 data class CampData(
     @PrimaryKey(autoGenerate = true)
-    val camp_num: Long,
+    val camp_num: Long?,
     @ColumnInfo(name = "camp_title")
     var campTitle: String,
     @ColumnInfo(name = "camp_start_date")
@@ -22,4 +22,15 @@ data class CampData(
     var campType: String,
     @ColumnInfo(name = "camp_budget")
     var campBudget: Int
-)
+) {
+    constructor(): this(
+        0,
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        0
+    )
+}

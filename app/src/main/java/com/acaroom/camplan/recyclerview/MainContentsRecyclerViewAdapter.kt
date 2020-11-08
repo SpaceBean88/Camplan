@@ -1,14 +1,14 @@
 package com.acaroom.camplan.recyclerview
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.acaroom.camplan.R
 import com.acaroom.camplan.data.CampData
 
-class MainContentsRecyclerViewAdapter : RecyclerView.Adapter<MainContentItemViewHolder>() {
-
-    private var contentsList = ArrayList<CampData>()
+class MainContentsRecyclerViewAdapter(val context: Context, private val contentsList: ArrayList<CampData>)
+                                        : RecyclerView.Adapter<MainContentItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainContentItemViewHolder {
 
@@ -25,8 +25,8 @@ class MainContentsRecyclerViewAdapter : RecyclerView.Adapter<MainContentItemView
     }
 
     //외부에서 어답터에 데이터 배열을 넣어준다.
-    fun submitList(contentsList: ArrayList<CampData>) {
-        this.contentsList = contentsList
-    }
+//    fun submitList(contentsList: ArrayList<CampData>) {
+//        this.contentsList = contentsList
+//    }
 
 }

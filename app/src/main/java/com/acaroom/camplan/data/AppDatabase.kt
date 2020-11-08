@@ -20,10 +20,15 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "database-campdata.db"
                 )
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build()
             }
             return instance
+        }
+
+        fun destroyInstance() {
+            instance = null
         }
     }
 }
