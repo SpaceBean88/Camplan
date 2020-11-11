@@ -1,4 +1,4 @@
-package com.acaroom.camplan.data
+package com.acaroom.camplan.model
 
 import android.util.Log
 import androidx.lifecycle.LiveData

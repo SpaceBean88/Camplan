@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.acaroom.camplan.R
 import com.acaroom.camplan.data.CampData
 
-class MainContentsRecyclerViewAdapter(val context: Context, private val contentsList: ArrayList<CampData>)
+class MainContentsRecyclerViewAdapter internal constructor (val context: Context)
                                         : RecyclerView.Adapter<MainContentItemViewHolder>() {
+
+    private var contentsList: List<CampData>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainContentItemViewHolder {
 
@@ -17,16 +19,18 @@ class MainContentsRecyclerViewAdapter(val context: Context, private val contents
     }
 
     override fun onBindViewHolder(holder: MainContentItemViewHolder, position: Int) {
-        holder.bindWithView(this.contentsList[position])
+        if(contentsList != null)
+            return holder.bindWithView(this.contentsList!![position])
     }
 
     override fun getItemCount(): Int {
-        return contentsList.size
+        return if (contentsList != null) contentsList!!.size else 0
     }
 
     //외부에서 어답터에 데이터 배열을 넣어준다.
-//    fun submitList(contentsList: ArrayList<CampData>) {
-//        this.contentsList = contentsList
-//    }
+    internal fun setList(contentsList: List<CampData>) {
+        this.contentsList = contentsList
+        notifyDataSetChanged()
+    }
 
 }

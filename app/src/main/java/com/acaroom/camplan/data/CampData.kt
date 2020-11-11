@@ -3,34 +3,25 @@ package com.acaroom.camplan.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "camp_data")
 data class CampData(
     @PrimaryKey(autoGenerate = true)
-    val camp_num: Long?,
+    val camp_num: Int = 0,
     @ColumnInfo(name = "camp_title")
-    var campTitle: String,
+    var campTitle: String = "",
     @ColumnInfo(name = "camp_start_date")
-    var campStartDate: String,
+    var campStartDate: String = "",
     @ColumnInfo(name = "camp_end_date")
-    var campEndDate: String,
+    var campEndDate: String = "",
     @ColumnInfo(name = "camp_site_name")
-    var campSiteName: String,
+    var campSiteName: String = "",
     @ColumnInfo(name = "camp_location")
-    var campLocation: String,
+    var campLocation: String = "",
     @ColumnInfo(name = "camp_type")
-    var campType: String,
+    var campType: String = "",
     @ColumnInfo(name = "camp_budget")
-    var campBudget: Int
-) {
-    constructor(): this(
-        0,
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        0
-    )
+    var campBudget: Int = 0
+) : Serializable {
 }
