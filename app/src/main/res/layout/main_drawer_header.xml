@@ -20,6 +20,6 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:src="@drawable/ic_logo_image"/>
+        android:src="@drawable/ic_logo_text"/>
 
 </RelativeLayout>
